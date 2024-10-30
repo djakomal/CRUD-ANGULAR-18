@@ -9,7 +9,7 @@ import { Models } from './models';
 })
 export class HelpService {
 
-  private matiereUrl  = "http://localhost:8080/medico/user"
+  private matiereUrl  = "http://localhost:8081/mail/mail"
   constructor(
     private http: HttpClient
   )
@@ -22,7 +22,7 @@ export class HelpService {
    * @return response()
    */
   public create(models:Models):Observable<any> {
-    return this.http.post(`${this.matiereUrl}/`,models).pipe(
+    return this.http.post(`${this.matiereUrl}/add`,models).pipe(
       catchError(this.errorHandler)
     );
   }
@@ -35,7 +35,7 @@ export class HelpService {
    * @return response()
    */
   public getAll():Observable<any> {
-    return this.http.get(`${this.matiereUrl}`).pipe(
+    return this.http.get(`${this.matiereUrl}/`).pipe(
       catchError(this.errorHandler)
     );
   }
