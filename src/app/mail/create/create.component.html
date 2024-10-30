@@ -1,0 +1,71 @@
+<div class="container">
+    <h1>Create New Mail</h1>
+  
+    <a href="#" routerLink="/index" class="btn btn-primary">Back</a>
+        
+    <form [formGroup]="form" (ngSubmit)="submit()">
+  
+        <div class="form-group">
+            <label for="">Email:</label>
+            <input 
+                formControlName="email"
+                id="email" 
+                type="email" 
+                class="form-control">
+            <div NgIf="f['email'].touched & f['email'].invalid" class="alert alert-danger">
+                <div NgIf="f['email'].errors & f['email'].errors['required']">
+                Title is required.
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <label for="">Reciver Email:</label>
+            <input 
+                formControlName="reciver email"
+                id="email" 
+                type="email" 
+                class="form-control">
+            <div NgIf="f['emailToRecive'].touched & f['emailToRecive'].invalid" class="alert alert-danger">
+                <div NgIf="f['emailToRecive'].errors & f['emailToRecive'].errors['required']">
+                Reciver Email is required.
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <label for="objet">Objet:</label>
+            <input 
+                formControlName="Objet"
+                id="Objet" 
+                type="text" 
+                class="form-control">
+            <div NgIf="f['Objet'].touched & f['Objet'].invalid" class="alert alert-danger">
+                <div NgIf="f['Objet'].errors & f['Objet'].errors['required']">
+                Objet is required.
+                </div>
+            </div>
+        </div>
+  
+        <div class="form-group">
+            <label for="">description</label>
+            <textarea 
+                formControlName="description"
+                id="description" 
+                type="text" 
+                class="form-control">
+            </textarea>
+            <div NgIf="f['description'].touched & f['description'].invalid" class="alert alert-danger">
+                <div NgIf="f['description'].errors & f['description'].errors['required']">
+                    description is required.
+                </div>
+            </div>
+        </div>
+  
+        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Submit</button>
+    </form>
+</div>
