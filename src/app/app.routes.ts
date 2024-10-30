@@ -5,9 +5,7 @@ import { ViewComponent } from './mail/view/view.component';
 import { EditeComponent } from './mail/edite/edite.component';
 
 export const routes: Routes = [
-    {
-        path:'',redirectTo:'index',pathMatch:'full'
-    },
+     
     {
         path:'index',component:IndexComponent
     },

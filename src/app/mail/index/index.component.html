@@ -7,8 +7,10 @@
         <thead>
               <tr>
                 <th>ID</th>
-                <th>Title</th>
-                <th>Body</th>
+                <th>Email</th>
+                <th>Reciver</th>
+                <th>Objet</th>
+                <th>Description</th>
                 <th width="250px">Action</th>
               </tr>
         </thead>
@@ -16,13 +18,13 @@
               <tr *ngFor="let model of models">
                 <td>{{ model.id }}</td>
                 <td>{{ model.email }}</td>
-                <td>{{ model.emailToRecive }}</td>
-                <td>{{ model.Objet }}</td>
+                <td>{{ model.reciver }}</td>
+                <td>{{ model.objet }}</td>
                 <td>{{ model.description }}</td>
                 
                 <td>
-                  <a href="#" [routerLink]="[ 'view',model.id]" class="btn btn-info">View</a>
-                  <a href="#" [routerLink]="[ 'edit',model.id]" class="btn btn-primary">Edit</a>
+                  <a href="#" routerLink="/View" class="btn btn-info">View</a>
+                  <a href="#" routerLink="/edite" class="btn btn-primary">Edit</a>
                   <button type="button" (click)="deleteMail(model.id)" class="btn btn-danger">Delete</button>
                 </td>
               </tr>

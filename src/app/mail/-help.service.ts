@@ -2,14 +2,17 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { catchError, Observable, throwError } from 'rxjs';
-import { Models } from './models';
+import { Models } from './mail';
+
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class HelpService {
 
-  private matiereUrl  = "http://localhost:8081/mail/mail"
+  private matiereUrl  = "http://localhost:8081/mail/CRUD"
+  
   constructor(
     private http: HttpClient
   )
@@ -21,8 +24,39 @@ export class HelpService {
    *
    * @return response()
    */
-  public create(models:Models):Observable<any> {
-    return this.http.post(`${this.matiereUrl}/add`,models).pipe(
+  public create(models:Models):Observable<Models> {
+    return this.http.post<Models>(`${this.matiereUrl}/add`,models)
+  }
+
+
+
+    /**
+   * Write code on Method
+   *
+   * @return response()
+   */
+  public getAll():Observable<Models[]> {
+    return this.http.get<Models[]>(`${this.matiereUrl}`)
+  }
+
+    /**
+   * Write code on Method
+   *
+   * @return response()
+   */
+  delete(id: number):Observable<Models> {
+    return this.http.delete<Models>(`${this.matiereUrl}/delete/${id}`).pipe(
+      catchError(this.errorHandler)
+    );
+  }
+
+    /**
+   * Write code on Method
+   *
+   * @return response()
+   */
+  find(id: number): Observable<Models> {
+    return this.http.get<Models>(`${this.matiereUrl}/get/${id}`).pipe(
       catchError(this.errorHandler)
     );
   }
@@ -34,44 +68,9 @@ export class HelpService {
    *
    * @return response()
    */
-  public getAll():Observable<any> {
-    return this.http.get(`${this.matiereUrl}/`).pipe(
-      catchError(this.errorHandler)
-    );
-  }
-
-    /**
-   * Write code on Method
-   *
-   * @return response()
-   */
-  delete(id: number) {
-    return this.http.delete(`${this.matiereUrl}/delete/${id}`).pipe(
-      catchError(this.errorHandler)
-    );
-  }
-
-    /**
-   * Write code on Method
-   *
-   * @return response()
-   */
-  find(id: number): Observable<any> {
-    return this.http.get(`${this.matiereUrl}/get/${id}`).pipe(
-      catchError(this.errorHandler)
-    );
-  }
-
-
-
-    /**
-   * Write code on Method
-   *
-   * @return response()
-   */
-  Update(id:number ,models:Models): Observable<any> {
+  Update(id:number ,models:Models): Observable<Models> {
     // return this.http.put<User>(`${this.matiereUrl}/update/${user.id}`,user);
-    return this.http.put(this.matiereUrl+ '/update/'+ id, JSON.stringify(models)).pipe(
+    return this.http.put<Models>(this.matiereUrl+ '/update/'+ id, JSON.stringify(models)).pipe(
       catchError(this.errorHandler)
     );
   }

@@ -28,7 +28,8 @@
                 formControlName="reciver email"
                 id="email" 
                 type="email" 
-                [(ngModel)]="model.emailToRecive"
+                [(ngModel)]="model.reciver"
+                
                 class="form-control">
             <div NgIf="f['emailToRecive'].touched & f['emailToRecive'].invalid" class="alert alert-danger">
                 <div NgIf="f['emailToRecive'].errors & f['emailToRecive'].errors['required']">
@@ -42,10 +43,10 @@
         <div class="form-group">
             <label for="objet">Objet:</label>
             <input 
-                formControlName="Objet"
+                formControlName="objet"
                 id="objet" 
                 type="text" 
-                [(ngModel)]="model.Objet"
+                [(ngModel)]="model.objet"
                 class="form-control">
             <div NgIf="f['objet'].touched & f['objet'].invalid" class="alert alert-danger">
                 <div NgIf="f['objet'].errors & f['objet'].errors['required']">

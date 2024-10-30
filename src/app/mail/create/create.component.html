@@ -6,7 +6,7 @@
     <form [formGroup]="form" (ngSubmit)="submit()">
   
         <div class="form-group">
-            <label for="">Email:</label>
+            <label for="email">Email:</label>
             <input 
                 formControlName="email"
                 id="email" 
@@ -14,7 +14,7 @@
                 class="form-control">
             <div NgIf="f['email'].touched & f['email'].invalid" class="alert alert-danger">
                 <div NgIf="f['email'].errors & f['email'].errors['required']">
-                Title is required.
+                email is required.
                 </div>
             </div>
         </div>
@@ -24,12 +24,12 @@
         <div class="form-group">
             <label for="">Reciver Email:</label>
             <input 
-                formControlName="reciver email"
+                formControlName="reciver"
                 id="email" 
                 type="email" 
                 class="form-control">
-            <div NgIf="f['emailToRecive'].touched & f['emailToRecive'].invalid" class="alert alert-danger">
-                <div NgIf="f['emailToRecive'].errors & f['emailToRecive'].errors['required']">
+            <div NgIf="f['reciver'].touched & f['reciver'].invalid" class="alert alert-danger">
+                <div NgIf="f['reciver'].errors & f['reciver'].errors['required']">
                 Reciver Email is required.
                 </div>
             </div>
@@ -40,8 +40,8 @@
         <div class="form-group">
             <label for="objet">Objet:</label>
             <input 
-                formControlName="Objet"
-                id="Objet" 
+                formControlName="objet"
+                id="objet" 
                 type="text" 
                 class="form-control">
             <div NgIf="f['Objet'].touched & f['Objet'].invalid" class="alert alert-danger">
