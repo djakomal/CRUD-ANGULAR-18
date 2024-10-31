@@ -14,7 +14,7 @@ import { Models } from '../mail';
   styleUrl: './index.component.css'
 })
 export class IndexComponent implements OnInit{
-  models!:Models[];
+  models:Models[]=[];
 
   constructor(private helpe:HelpService,
     private router:Router
@@ -24,11 +24,21 @@ export class IndexComponent implements OnInit{
 
   ngOnInit(): void{
     this.helpe.getAll().subscribe(
-      (data)=>{
+      (data=>{
       this.models = data;
-      console.log(data);})
+      console.log(data);
+    }))
   }
 
+  updateMail(sid:number){
+      console.log(sid);
+      this.router.navigate(['edite',sid]);
+  }
+
+  viewMail(sid:number){
+    console.log(sid);
+    this.router.navigate(['View',sid]);
+}
 
 
   deleteMail(id:number){

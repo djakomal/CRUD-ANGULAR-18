@@ -23,8 +23,8 @@
                 <td>{{ model.description }}</td>
                 
                 <td>
-                  <a href="#" routerLink="/View" class="btn btn-info">View</a>
-                  <a href="#" routerLink="/edite" class="btn btn-primary">Edit</a>
+                  <button (click)="viewMail(model.id)" class="btn btn-info">View</button>
+                  <button  class="btn btn-primary" (click)="updateMail(model.id)"  >Edit</button>
                   <button type="button" (click)="deleteMail(model.id)" class="btn btn-danger">Delete</button>
                 </td>
               </tr>

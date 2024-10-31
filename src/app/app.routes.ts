@@ -13,9 +13,12 @@ export const routes: Routes = [
         path:'create',component:CreateComponent
     },
     {
-        path:'View',component:ViewComponent
+        path:'View/:id',component:ViewComponent
     }, 
      {
+        path:'edite/:id',component:EditeComponent
+    },
+    {
         path:'edite',component:EditeComponent
     }
 ];

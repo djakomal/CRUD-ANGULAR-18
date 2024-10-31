@@ -15,7 +15,7 @@ import { HelpService } from '../-help.service';
 })
 export class EditeComponent implements OnInit {
   id!: number;
-  model!: Models;
+  model: Models = new Models();
   form!: FormGroup;
 
   constructor(
@@ -27,24 +27,24 @@ export class EditeComponent implements OnInit {
 
   ngOnInit() {
     this.id = this.route.snapshot.params['id'];
-    
+   
+   
     // Récupération du modèle à partir du service
-    this.help.find(this.id).subscribe((data) => {
+    this.help.find(this.id).subscribe((data => {
       this.model = data;
-    });
+      console.log(this.model);
+    }));
 
     // Création du formulaire à partir du service
     this.form = this.service.InsertCreate();
 
-    // Si vous souhaitez pré-remplir le formulaire avec les données du modèle récupéré
+    //  pré-remplir le formulaire avec les données du modèle récupéré
     if (this.model) {
       this.form.patchValue(this.model);
     }
   }
 
-  get f() {
-    return this.form.controls;
-  }
+
 
   submit() {
     if (this.form.valid) {
