@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { catchError, Observable, throwError } from 'rxjs';
@@ -70,7 +70,10 @@ export class HelpService {
    */
   Update(id:number ,models:Models): Observable<Models> {
     // return this.http.put<User>(`${this.matiereUrl}/update/${user.id}`,user);
-    return this.http.put<Models>(this.matiereUrl+ '/update/'+ id, JSON.stringify(models)).pipe(
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json', // Déclare que le corps de la requête est au format JSON
+    });
+    return this.http.put<Models>(`${this.matiereUrl}/update/${id}`,models).pipe(
       catchError(this.errorHandler)
     );
   }

@@ -5,6 +5,9 @@ import { ViewComponent } from './mail/view/view.component';
 import { EditeComponent } from './mail/edite/edite.component';
 
 export const routes: Routes = [
+    {
+        path:'', pathMatch:'full', component:IndexComponent
+    },
      
     {
         path:'index',component:IndexComponent

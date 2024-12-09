@@ -48,10 +48,23 @@ export class EditeComponent implements OnInit {
 
   submit() {
     if (this.form.valid) {
-      console.log(this.form.value);
+      // lui aussi marche mais c'est manuel
+      // if (this.form.value.email) this.model.email = this.form.value.email;
+      // if (this.form.value.reciver) this.model.reciver = this.form.value.reciver;
+      // if (this.form.value.objet) this.model.objet = this.form.value.objet;
+      // if (this.form.value.description) this.model.description = this.form.value.description;
+          // Parcours des champs du formulaire pour mettre à jour `this.model`
+    for (let key in this.form.value) {
+            // Type assertion pour dire à TypeScript que `key` est une clé valide dans `this.model`
+      if (this.form.value[key] !== null && this.form.value[key] !== '') {
+        this.model[key] = this.form.value[key];
+      }
+    }
+      console.log(this.model);
       this.help.Update(this.id, this.model).subscribe(
         (res: any) => {
-          console.log('Mail updated successfully!');
+          console.log('Mail updated successfully!',res);
+          alert("modification reussi ")
           this.router.navigateByUrl('index');
         },
         (error: any) => {
