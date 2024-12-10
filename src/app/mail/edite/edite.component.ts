@@ -27,8 +27,8 @@ export class EditeComponent implements OnInit {
 
   ngOnInit() {
     this.id = this.route.snapshot.params['id'];
-   
-   
+
+
     // Récupération du modèle à partir du service
     this.help.find(this.id).subscribe((data => {
       this.model = data;
@@ -54,6 +54,7 @@ export class EditeComponent implements OnInit {
       // if (this.form.value.objet) this.model.objet = this.form.value.objet;
       // if (this.form.value.description) this.model.description = this.form.value.description;
           // Parcours des champs du formulaire pour mettre à jour `this.model`
+        // plus simple
     for (let key in this.form.value) {
             // Type assertion pour dire à TypeScript que `key` est une clé valide dans `this.model`
       if (this.form.value[key] !== null && this.form.value[key] !== '') {
